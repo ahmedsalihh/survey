@@ -1,5 +1,7 @@
-import { createSurveyFail } from './createSurveyActions';
 import Axios from 'axios';
+
+import * as createSurveyActions from './createSurveyActions';
+import * as answerActions from './answerActions';
 
 export const createSurvey = (topic, question, history) => {
   return dispatch => {
@@ -11,8 +13,21 @@ export const createSurvey = (topic, question, history) => {
           history.push('/surveys');
         })
         .catch(err => {
-          dispatch(createSurveyFail(err.message));
+          dispatch(createSurveyActions.createSurveyFail(err.message));
         });
     }
+  };
+};
+
+export const getAnswersBySurveyId = surveyId => {
+  return dispatch => {
+    Axios.get(`http://localhost:8080/answers/${surveyId}`)
+      .then(res => {
+        dispatch(answerActions.setSelectedAnswers(res.data));
+      })
+      .catch(err => {
+        dispatch(answerActions.setSelectedAnswersFail(err.message));
+        console.log(err);
+      });
   };
 };

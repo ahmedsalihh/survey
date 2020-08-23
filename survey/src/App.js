@@ -5,6 +5,7 @@ import SubmitSurvey from './component/SubmitSurvey';
 import ListAnswers from './component/ListAnswers';
 import ListSurveys from './component/ListSurveys';
 import CreateSurveyContainer from './containers/CreateSurveyContainer';
+import ListAnswersContainer from './containers/ListAnswersContainer';
 
 const App = () => {
   return (
@@ -44,7 +45,7 @@ const App = () => {
               <SubmitSurvey />
             </Route>
             <Route path='/answers'>
-              <ListAnswers />
+              <ListAnswersContainer />
             </Route>
             <Route path='/surveys'>
               <ListSurveys />

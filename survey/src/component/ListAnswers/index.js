@@ -4,23 +4,23 @@ import CommonTable from '../CommonTable';
 import Axios from 'axios';
 import SurveySelect from '../SurveySelect';
 
-const ListAnswers = () => {
-  const [answers, setAnswers] = useState([]);
+const ListAnswers = ({ answers, errMessage, getAnswersBySurveyId }) => {
+  // const [answers, setAnswers] = useState([]);
 
-  const getSurveys = surveyId => {
-    if (surveyId) {
-      Axios.get(`http://localhost:8080/answers/${surveyId}`)
-        .then(res => {
-          setAnswers(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  };
+  // const getSurveys = surveyId => {
+  //   if (surveyId) {
+  //     Axios.get(`http://localhost:8080/answers/${surveyId}`)
+  //       .then(res => {
+  //         setAnswers(res.data);
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //       });
+  //   }
+  // };
 
   const handleSelectionChange = value => {
-    getSurveys(value);
+    getAnswersBySurveyId(value);
   };
 
   return (
