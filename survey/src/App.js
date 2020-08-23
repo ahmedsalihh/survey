@@ -4,6 +4,7 @@ import CreateSurvey from './component/CreateSurvey';
 import SubmitSurvey from './component/SubmitSurvey';
 import ListAnswers from './component/ListAnswers';
 import ListSurveys from './component/ListSurveys';
+import CreateSurveyContainer from './containers/CreateSurveyContainer';
 
 const App = () => {
   return (
@@ -18,10 +19,10 @@ const App = () => {
         <div className='container'>
           <ul>
             <li>
-              <Link to='/'>List Surveys</Link>
+              <Link to='/'>Create Survey</Link>
             </li>
             <li>
-              <Link to='/create'>Create Survey</Link>
+              <Link to='/surveys'>List Surveys</Link>
             </li>
             <li>
               <Link to='/submit'>Submit Survey</Link>
@@ -36,8 +37,8 @@ const App = () => {
       <div className='container'>
         <section id='main'>
           <Switch>
-            <Route path='/create'>
-              <CreateSurvey />
+            <Route exact path='/'>
+              <CreateSurveyContainer />
             </Route>
             <Route path='/submit'>
               <SubmitSurvey />
@@ -45,7 +46,7 @@ const App = () => {
             <Route path='/answers'>
               <ListAnswers />
             </Route>
-            <Route exact path='/'>
+            <Route path='/surveys'>
               <ListSurveys />
             </Route>
           </Switch>

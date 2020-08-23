@@ -30,6 +30,10 @@ body {
   display: inline;
 }
 
+#navbar li:active {
+  color: red;
+}
+
 #navbar a {
   color: #fff;
   text-decoration: none;

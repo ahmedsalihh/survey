@@ -2,29 +2,15 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const CreateSurvey = () => {
+const CreateSurvey = ({ errMessage, createSurvey }) => {
   let history = useHistory();
 
   const [topic, setTopic] = useState('');
   const [question, setQuestion] = useState('');
-  const [errMessage, setErrMessage] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (topic === '' || question === '') {
-      setErrMessage('Fileds cannot be empty!!');
-    } else {
-      Axios.post(`http://localhost:8080/surveys`, { topic, question })
-        .then(() => {
-          setQuestion('');
-          setTopic('');
-          setErrMessage(null);
-          history.push('/');
-        })
-        .catch(err => {
-          setErrMessage(err.message);
-        });
-    }
+    createSurvey(topic, question, history);
   };
   return (
     <form className='form' onSubmit={handleSubmit}>
