@@ -3,22 +3,12 @@ import { surveyListColumns } from '../../constants';
 import Axios from 'axios';
 import CommonTable from '../CommonTable';
 
-const ListSurveys = () => {
-  const [surveys, setSurveys] = useState([]);
+const ListSurveys = ({ surveys, getSurveys }) => {
+  // const [surveys, setSurveys] = useState([]);
 
   useEffect(() => {
-    function getSurveys() {
-      Axios.get('http://localhost:8080/surveys')
-        .then(res => {
-          setSurveys(res.data);
-          console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
     getSurveys();
-  }, []);
+  }, [getSurveys]);
 
   return (
     <div>

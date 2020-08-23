@@ -6,6 +6,7 @@ import ListAnswers from './component/ListAnswers';
 import ListSurveys from './component/ListSurveys';
 import CreateSurveyContainer from './containers/CreateSurveyContainer';
 import ListAnswersContainer from './containers/ListAnswersContainer';
+import ListSurveysContainer from './containers/ListSurveysContainer';
 
 const App = () => {
   return (
@@ -48,7 +49,7 @@ const App = () => {
               <ListAnswersContainer />
             </Route>
             <Route path='/surveys'>
-              <ListSurveys />
+              <ListSurveysContainer />
             </Route>
           </Switch>
         </section>
