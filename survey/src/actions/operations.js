@@ -7,7 +7,7 @@ import * as surveysActions from './surveysActions';
 export const createSurvey = (topic, question, history) => {
   return dispatch => {
     if (topic === '' || question === '') {
-      dispatch(createSurveyFail('Fileds cannot be empty!!'));
+      dispatch(createSurveyActions.createSurveyFail('Fileds cannot be empty!!'));
     } else {
       Axios.post(`http://localhost:8080/surveys`, { topic, question })
         .then(() => {

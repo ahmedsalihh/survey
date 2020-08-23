@@ -116,6 +116,7 @@ body {
   border-radius: 5px;
   height: 50px;
   width: 200px;
+  font-size: 20px;
 }
 .select:focus,
 .select:hover {
@@ -177,10 +178,25 @@ body {
   color: #bbbbbb;
 }
 
+.form-input-error {
+  color: #d50000;
+  background: #fff8f8;
+  border-color: #d50000;
+}
+
+.form-input-error::placeholder {
+  color: #ffbfbf;
+}
+
 .form-error {
   padding-top: 10px;
   color: #d50000;
   font-size: 0.8em;
+  visibility: hidden;
+}
+
+.form-input-error + .form-error {
+  visibility: visible;
 }
 
 textarea.form-input {

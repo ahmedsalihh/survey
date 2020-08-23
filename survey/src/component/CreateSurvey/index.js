@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -8,10 +8,24 @@ const CreateSurvey = ({ errMessage, createSurvey }) => {
   const [topic, setTopic] = useState('');
   const [question, setQuestion] = useState('');
 
+  useEffect(() => {
+    handleContentLoaded();
+  }, []);
+
   const handleSubmit = e => {
     e.preventDefault();
     createSurvey(topic, question, history);
   };
+
+  const handleContentLoaded = () => {
+    var elems = document.querySelectorAll('.form-item');
+    elems.forEach(input =>
+      input.addEventListener('input', () => {
+        input.children[1].className = input.children[1].className.replace(/form-input-error ?/, '');
+      }),
+    );
+  };
+
   return (
     <form className='form' onSubmit={handleSubmit}>
       <div className='form-title'>Create Survey</div>
@@ -21,13 +35,14 @@ const CreateSurvey = ({ errMessage, createSurvey }) => {
         </label>
         <input
           type='text'
-          className='form-input'
+          className='form-input form-input-error'
           name='topic'
           id='topic'
           value={topic}
           placeholder='Enter Your Topic'
           onChange={e => setTopic(e.target.value)}
         />
+        <span className='form-error'>Topic cannot be empty</span>
       </div>
       <div className='form-item'>
         <label htmlFor='topic' className='form-label'>
@@ -35,13 +50,14 @@ const CreateSurvey = ({ errMessage, createSurvey }) => {
         </label>
         <input
           type='text'
-          className='form-input'
+          className='form-input form-input-error'
           name='question'
           id='question'
           value={question}
           placeholder='Enter Your Question'
           onChange={e => setQuestion(e.target.value)}
         />
+        <span className='form-error'>Question cannot be empty</span>
       </div>
       <div className='form-item'>
         <button className='form-btn' type='submit'>
@@ -50,7 +66,7 @@ const CreateSurvey = ({ errMessage, createSurvey }) => {
       </div>
       {errMessage ? (
         <div className='form-item'>
-          <span className='form-error'>{errMessage}</span>
+          <span>{errMessage}</span>
         </div>
       ) : null}
     </form>
