@@ -44,3 +44,27 @@ export const getSurveys = () => {
       });
   };
 };
+
+export const getSelectedSurvey = surveyId => {
+  return dispatch => {
+    Axios.get(`http://localhost:8080/surveys/${surveyId}`)
+      .then(res => {
+        dispatch(surveysActions.getSelectedSurveySuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(surveysActions.getSelectedSurveyFail(err.message));
+      });
+  };
+};
+export const submitSurvey = (surveyId, data, history) => {
+  return dispatch => {
+    Axios.post(`http://localhost:8080/answers/${surveyId}`, data)
+      .then(res => {
+        dispatch(surveysActions.getSelectedSurveySuccess(null));
+        history.push('/answers');
+      })
+      .catch(err => {
+        dispatch(answerActions.submitSurveyFail(err.message));
+      });
+  };
+};

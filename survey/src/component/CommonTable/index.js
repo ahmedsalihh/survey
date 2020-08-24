@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './table.css';
+
 const CommonTable = ({ columns, data }) => {
   const renderTableData = (data, columns) => {
     return data.map((datum, dataIndex) => (

@@ -1,0 +1,42 @@
+textarea {
+  -webkit-appearance: none;
+  min-height: 200px;
+  width: 70%;
+  padding: 0.8em;
+  font-size: 0.9em;
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  background: #f3f3f3;
+  transition: background 0.25s;
+}
+
+.survey-form {
+  text-align: center;
+}
+
+.survey-form h2 {
+  margin-top: 5%;
+}
+
+.survey-form button {
+  margin-top: 2%;
+}
+
+.btn {
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 10px 10px;
+  margin: 10px 0;
+
+  color: #ffffff;
+  background: coral;
+  border: 2px solid #ac5333;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:active {
+  background: #ac5333;
+}

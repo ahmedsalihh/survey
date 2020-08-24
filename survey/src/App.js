@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import CreateSurvey from './component/CreateSurvey';
+
 import SubmitSurvey from './component/SubmitSurvey';
-import ListAnswers from './component/ListAnswers';
-import ListSurveys from './component/ListSurveys';
+
 import CreateSurveyContainer from './containers/CreateSurveyContainer';
 import ListAnswersContainer from './containers/ListAnswersContainer';
 import ListSurveysContainer from './containers/ListSurveysContainer';
+import SubmitSurveyContainer from './containers/SubmitSurveyContainer';
 
 const App = () => {
   return (
@@ -43,7 +43,7 @@ const App = () => {
               <CreateSurveyContainer />
             </Route>
             <Route path='/submit'>
-              <SubmitSurvey />
+              <SubmitSurveyContainer />
             </Route>
             <Route path='/answers'>
               <ListAnswersContainer />

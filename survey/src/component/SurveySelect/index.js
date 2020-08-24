@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
+import './survey-select.css';
+
 const SurveySelect = ({ selectionChange }) => {
   const [surveys, setSurveys] = useState([]);
 
