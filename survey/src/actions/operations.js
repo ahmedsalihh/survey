@@ -60,6 +60,7 @@ export const submitSurvey = (surveyId, data, history) => {
   return dispatch => {
     Axios.post(`http://localhost:8080/answers/${surveyId}`, data)
       .then(res => {
+        dispatch(answerActions.setSelectedAnswers([]));
         dispatch(surveysActions.getSelectedSurveySuccess(null));
         history.push('/answers');
       })
