@@ -1,7 +1,7 @@
 ## Using
 
 ### With docker-compose
-**Prerequisitis**
+**Prerequisites**
 - docker 
 - docker-compose
 - git
@@ -14,7 +14,7 @@
 App will start at localhost:80
 
 ### Manuel
-**Prerequisitis**
+**Prerequisites**
 - node latest version
 - yarn
 - java 8 or above
