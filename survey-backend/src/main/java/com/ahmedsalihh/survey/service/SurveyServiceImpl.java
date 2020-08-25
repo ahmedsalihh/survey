@@ -1,5 +1,6 @@
 package com.ahmedsalihh.survey.service;
 
+import com.ahmedsalihh.survey.exception.BadRequestException;
 import com.ahmedsalihh.survey.model.Survey;
 import com.ahmedsalihh.survey.repository.SurveyRepository;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public Survey save(Survey survey) {
+        if (survey.getTopic().equals("") || survey.getQuestion().equals("")) {
+            throw new BadRequestException("Topic or Question can't be empty");
+        }
         return surveyRepository.save(survey);
     }
 

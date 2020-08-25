@@ -20,6 +20,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<?> badRequestException(BadRequestException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), 400, request.getDescription(false));
+        log.error("{}", errorDetails.getMessage());
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), 500, request.getDescription(false));

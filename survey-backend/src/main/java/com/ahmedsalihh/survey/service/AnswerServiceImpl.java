@@ -1,5 +1,6 @@
 package com.ahmedsalihh.survey.service;
 
+import com.ahmedsalihh.survey.exception.BadRequestException;
 import com.ahmedsalihh.survey.exception.ResourceNotFoundException;
 import com.ahmedsalihh.survey.model.Answer;
 import com.ahmedsalihh.survey.repository.AnswerRepository;
@@ -23,7 +24,9 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     @Transactional
     public Answer save(Long surveyId, Answer answer) {
-
+        if (answer.getScore() == 0 || answer.getFeedback().equals("")) {
+            throw new BadRequestException("Score or feedback can't be empty");
+        }
         return surveyRepository.findById(surveyId).map(survey -> {
             answer.setSurvey(survey);
             Answer saveResponse = answerRepository.save(answer);
