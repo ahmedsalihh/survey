@@ -24,8 +24,8 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     @Transactional
     public Answer save(Long surveyId, Answer answer) {
-        if (answer.getScore() == 0 || answer.getFeedback().equals("")) {
-            throw new BadRequestException("Score or feedback can't be empty");
+        if (answer.getFeedback().equals("")) {
+            throw new BadRequestException("Feedback can't be empty");
         }
         return surveyRepository.findById(surveyId).map(survey -> {
             answer.setSurvey(survey);
