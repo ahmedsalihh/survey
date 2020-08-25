@@ -11,12 +11,14 @@
 - go to app directory
 - run `docker-compose up` command
 
+App will start at localhost:80
+
 ### Manuel
 **Prerequisitis**
 - node latest version
 - yarn
 - java 8 or above
-- mysql 5.7 (or docker mysql prefered)
+- mysql 5.7
 - intellij
 - vscode
 
@@ -33,10 +35,14 @@
    SPRING_DATASOURCE_PASSWORD=survey
     - run app
 
+App will start at localhost:8080
+
 3. Frontend
    - go to survey-frontend folder
    - run `yarn install` command
    - run `yarn start` command
+
+App will start at localhost:3000
 
 
 
