@@ -1,0 +1,12 @@
+{
+  "development": {
+    "CONFIG_ID": "development",
+    "SURVEYS": "http://localhost:8080/surveys",
+    "ANSWERS": "http://localhost:8080/answers"
+  },
+  "production": {
+    "CONFIG_ID": "production",
+    "SURVEYS": "http://localhost:8080/surveys",
+    "ANSWERS": "http://localhost:8080/answers"
+  }
+}

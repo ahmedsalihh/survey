@@ -8,8 +8,8 @@ import './submit-survey.css';
 
 const SubmitSurvey = ({
   selectedSurvey,
-  getSelectedSurvey,
   submitSurveyFailMessage,
+  getSelectedSurvey,
   submitSurvey,
 }) => {
   let history = useHistory();
@@ -41,6 +41,9 @@ const SubmitSurvey = ({
       </div>
       {!selectedSurvey ? null : (
         <div className='survey-form'>
+          <div>
+            <h2>{selectedSurvey.question}</h2>
+          </div>
           <div>
             <StartRating onRateChange={handleRateChange} />
           </div>

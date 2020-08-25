@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { surveyListColumns } from '../../constants';
-import Axios from 'axios';
+
 import CommonTable from '../CommonTable';
 
-const ListSurveys = ({ surveys, getSurveys }) => {
-  // const [surveys, setSurveys] = useState([]);
+import { surveyListColumns } from '../../constants';
 
+const ListSurveys = ({ surveys, getSurveys }) => {
   useEffect(() => {
     getSurveys();
   }, [getSurveys]);

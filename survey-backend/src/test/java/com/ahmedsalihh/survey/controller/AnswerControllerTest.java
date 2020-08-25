@@ -71,7 +71,7 @@ class AnswerControllerTest {
 
         Mockito.doReturn(answerResponse).when(answerService).save(survey.getId(), answer);
 
-        String json = TestHelper.convertToJson(survey);
+        String json = TestHelper.convertToJson(answer);
 
         mockMvc.perform(post("/answers/1").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andDo(print())

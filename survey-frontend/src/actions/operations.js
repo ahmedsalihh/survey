@@ -3,13 +3,14 @@ import Axios from 'axios';
 import * as createSurveyActions from './createSurveyActions';
 import * as answerActions from './answerActions';
 import * as surveysActions from './surveysActions';
+import finalConfig from '../config/config';
 
 export const createSurvey = (topic, question, history) => {
   return dispatch => {
     if (topic === '' || question === '') {
       dispatch(createSurveyActions.createSurveyFail('Fileds cannot be empty!!'));
     } else {
-      Axios.post(`http://localhost:8080/surveys`, { topic, question })
+      Axios.post(finalConfig.SURVEYS, { topic, question })
         .then(() => {
           history.push('/surveys');
         })
@@ -22,7 +23,7 @@ export const createSurvey = (topic, question, history) => {
 
 export const getAnswersBySurveyId = surveyId => {
   return dispatch => {
-    Axios.get(`http://localhost:8080/answers/${surveyId}`)
+    Axios.get(`${finalConfig.ANSWERS}/${surveyId}`)
       .then(res => {
         dispatch(answerActions.setSelectedAnswers(res.data));
       })
@@ -35,7 +36,7 @@ export const getAnswersBySurveyId = surveyId => {
 
 export const getSurveys = () => {
   return dispatch => {
-    Axios.get('http://localhost:8080/surveys')
+    Axios.get(finalConfig.SURVEYS)
       .then(res => {
         dispatch(surveysActions.setSurveysSuccess(res.data));
       })
@@ -47,7 +48,7 @@ export const getSurveys = () => {
 
 export const getSelectedSurvey = surveyId => {
   return dispatch => {
-    Axios.get(`http://localhost:8080/surveys/${surveyId}`)
+    Axios.get(`${finalConfig.SURVEYS}/${surveyId}`)
       .then(res => {
         dispatch(surveysActions.getSelectedSurveySuccess(res.data));
       })
@@ -58,7 +59,7 @@ export const getSelectedSurvey = surveyId => {
 };
 export const submitSurvey = (surveyId, data, history) => {
   return dispatch => {
-    Axios.post(`http://localhost:8080/answers/${surveyId}`, data)
+    Axios.post(`${finalConfig.ANSWERS}/${surveyId}`, data)
       .then(res => {
         dispatch(answerActions.setSelectedAnswers([]));
         dispatch(surveysActions.getSelectedSurveySuccess(null));
